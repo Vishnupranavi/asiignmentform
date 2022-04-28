@@ -123,6 +123,8 @@ next2.onclick = () => {
         }
         if(!isChecked)
            box.textContent = 'Please fill in this field';
+        else
+            box.textContent = '';
         if(inputFields[index].value=='' || inputFields[index].selectedIndex == '0')
         {
             flag=false;
@@ -163,6 +165,8 @@ next4.onclick = () => {
         {
             flag=false;
             inputFields[index].nextElementSibling.textContent = 'Please fill this field';
+        }else{
+            inputFields[index].nextElementSibling.textContent = '';
         }
     }
     if(flag)
@@ -178,21 +182,30 @@ back4.onclick=function(){
     form5.style.left="450px";``
 }
 
-check.onclick = (event) => {
-    var practice = document.getElementById('practice');
-    if(practice.selectedIndex == '0')
-    {
-        event.target.checked = false;
-        practice.nextElementSibling.textContent = 'Please fill in this field';
+    btn.onclick = () => {
+        var flag = true;
+        if(document.getElementById('practice').selectedIndex=='0')
+        {
+            document.getElementById('practice').nextElementSibling.textContent = 'Please fill in this field';
+            flag=false;
+           
+        }
+        else
+        {
+            document.getElementById('practice').nextElementSibling.textContent = '';
+        }
+        if(!document.getElementById('check').checked)
+        {
+            document.getElementById('check').nextElementSibling.textContent = 'Please fill in this field';
+            flag=false;
+        }
+        else
+        {
+            document.getElementById('practice').nextElementSibling.textContent = '';
+        }
+        if(flag)
+            form5.submit();
+        else    
+        alert('Please fill Terms and conditions');
     }
-    else
-        practice.nextElementSibling.textContent = '';
-    if(event.target.checked)
-    {
-        document.getElementById('btn').disabled = false;
-    }
-    else
-    {
-        document.getElementById('btn').disabled = true;
-    }
-}
+
